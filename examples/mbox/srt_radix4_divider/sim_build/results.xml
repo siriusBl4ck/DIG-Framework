@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1669673793" />
+    <testcase classname="srt_radix4_tb_clean" file="/mnt/5a853c24-31e3-4d80-9826-512f6bd995e7/saurav/siriusBl4ck/EE_Core/MiniProject_2/mbox/test/srt_radix4_tb_clean.py" lineno="17" name="test" ratio_time="8665783105105.359" sim_time_ns="4001000000000" time="0.4617009162902832" />
+  </testsuite>
+</testsuites>
