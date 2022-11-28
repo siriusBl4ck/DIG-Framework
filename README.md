@@ -1,6 +1,6 @@
 # Design Interface Generation for Verification
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/siriusBl4ck/DIG-Framework/blob/main/DIG_diag.png)
 
 ## Objective
 
