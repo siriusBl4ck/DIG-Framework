@@ -1,19 +1,28 @@
+from cocotb.triggers import FallingEdge
+from cocotb.triggers import RisingEdge
+
 class getVec_out:
+# 
 	def __init__(self):
+		self.active = False
 		self.rdy_ports = ["RDY_getVec_fst","RDY_getVec_snd"]
 		self.data_ports = { "getVec_fst" : int(0), "getVec_snd" : int(0)}
 
 	def set(self, portname, val): self.data_ports[portname] = val
+
+	def get(self, portname): return self.data_ports[portname]
 
 	def get_ports_raw(self): return [self.rdy_ports, self.data_ports]
 
 	def catch(self, dut):
 		for rdy in self.rdy_ports:
 			if dut._id(rdy, extended=False) == 1:
+				self.active = True
 				for k in self.data_ports.keys():
 					if rdy[4:] in k:
 						self.data_ports[k] = dut._id(k, extended=False).value
 						dut._log.info("CATCH " + k + " " + hex(self.data_ports[k]))
+			else: self.active = False
 
 	def cmp(self, expected):
 		for k in self.data_ports.keys():
@@ -27,6 +36,8 @@ class putVec_in:
 		self.data_ports = { "putVec_a" : int(0)}
 
 	def set(self, portname, val): self.data_ports[portname] = val
+
+	def get(self, portname): return self.data_ports[portname]
 
 	def wake(self): self.active = True
 
@@ -43,21 +54,27 @@ class putVec_in:
 			dut._id(k, extended=False).value = self.data_ports[k]
 
 class putVec_out:
+# 
 	def __init__(self):
+		self.active = False
 		self.rdy_ports = ["RDY_putVec"]
 		self.data_ports = { "putVec" : int(0)}
 
 	def set(self, portname, val): self.data_ports[portname] = val
+
+	def get(self, portname): return self.data_ports[portname]
 
 	def get_ports_raw(self): return [self.rdy_ports, self.data_ports]
 
 	def catch(self, dut):
 		for rdy in self.rdy_ports:
 			if dut._id(rdy, extended=False) == 1:
+				self.active = True
 				for k in self.data_ports.keys():
 					if rdy[4:] in k:
 						self.data_ports[k] = dut._id(k, extended=False).value
 						dut._log.info("CATCH " + k + " " + hex(self.data_ports[k]))
+			else: self.active = False
 
 	def cmp(self, expected):
 		for k in self.data_ports.keys():
@@ -69,6 +86,12 @@ class mk_test11:
 		self._getVec_out = getVec_out()
 		self._putVec_in = putVec_in()
 		self._putVec_out = putVec_out()
+
+	async def init_dut(self, dut):
+		await FallingEdge(dut.CLK)
+		dut.RST_N.value = 0
+		await RisingEdge(dut.CLK)
+		dut.RST_N.value = 1
 
 	def sleepall(self):
 		self._putVec_in.sleep()

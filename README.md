@@ -4,9 +4,9 @@
 
 ## How to run
 ```
-python3 verilogify.py <verilog_dir> <build_dir> <module_name> <dataclass_dir>
+python3 verilogify.py <verilog_dir> <build_dir> <module_name> <ba_dir> <dataclass_dir>
 ```
-Above command takes the verilog file located in ```verilog_dir```, .ba/.bo files in ```build_dir``` corresponding to ```module_name``` and creates a file called ```module_name_dataclasses.py``` with the generated dataclasses.
+Above command takes the verilog file located in ```verilog_dir```, .ba/.bo files in ```build_dir``` and ```ba_dir```, corresponding to ```module_name``` and creates a file called ```module_name_dataclasses.py``` with the generated dataclasses.
 
 Now, we can create a testbench for the design to be tested, say mk\_tb.py
 

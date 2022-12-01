@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1669925135" />
+    <testcase classname="mk_test11_tb" file="/mnt/5a853c24-31e3-4d80-9826-512f6bd995e7/saurav/siriusBl4ck/EE_Core/MiniProject_2/DIG-Framework/examples/basic/mk_test11/mk_test11_tb.py" lineno="17" name="test" ratio_time="13624129684675.021" sim_time_ns="106000000000" time="0.007780313491821289" />
+  </testsuite>
+</testsuites>

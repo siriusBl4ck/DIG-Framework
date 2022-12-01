@@ -1,6 +1,6 @@
 #! /usr/bin/env bluetcl
 
-source tcllibs_vlogfy/types.tcl
+source ./tcllibs/types.tcl
 
 package require types
 

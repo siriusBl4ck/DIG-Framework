@@ -26,6 +26,7 @@ class ma_start_in:
 			dut._id(k, extended=False).value = self.data_ports[k]
 
 class ma_start_out:
+# Primary Action
 	def __init__(self):
 		self.active = False
 		self.rdy_ports = ["RDY_ma_start"]
@@ -77,6 +78,7 @@ class mav_result_in:
 			dut._id(k, extended=False).value = self.data_ports[k]
 
 class mav_result_out:
+# Struct {Tuple2#(type a, type b)} {members {{Bit#(1) tpl_1 {width 1}} {Bit#(64) tpl_2 {width 64}}}} {width 65} {position {%/Libraries/Prelude.bs 3297 5 {Library Prelude}}}
 	def __init__(self):
 		self.active = False
 		self.rdy_ports = ["RDY_mav_result"]
@@ -128,6 +130,7 @@ class ma_set_flush_in:
 			dut._id(k, extended=False).value = self.data_ports[k]
 
 class ma_set_flush_out:
+# Primary Action
 	def __init__(self):
 		self.active = False
 		self.rdy_ports = ["RDY_ma_set_flush"]

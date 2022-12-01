@@ -26,6 +26,7 @@ class send_in:
 			dut._id(k, extended=False).value = self.data_ports[k]
 
 class send_out:
+# 
 	def __init__(self):
 		self.active = False
 		self.rdy_ports = ["RDY_send"]
@@ -53,6 +54,7 @@ class send_out:
 		return True
 
 class receive_out:
+# 
 	def __init__(self):
 		self.active = False
 		self.rdy_ports = ["RDY_receive"]

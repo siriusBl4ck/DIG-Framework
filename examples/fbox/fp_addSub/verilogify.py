@@ -2,6 +2,7 @@ import dataclasses as dcls
 import shlex
 import utils
 import sys
+import re
 
 class module:
 	def __init__(self, _name, _methods = [], _clk = None, _rst = None, _vdir = None):
@@ -150,10 +151,11 @@ class module:
 	#def run(self, TODO
 
 class method:
-	def __init__(self, _name):
+	def __init__(self, _name, _out_elab_type):
 		self.name = _name
 		self.vout_ports = {}
 		self.vin_ports = {}
+		self.out_elab_type = _out_elab_type
 
 #		for n in range(len(_voutput_ports_names)):
 #			self.vout_ports[_voutput_ports_names[n]] = _voutput_ports_bits[n]
@@ -244,6 +246,7 @@ class method:
 
 		if len(self.vout_ports.keys()) != 0: # output dataclass
 			s_out = "class {0}:\n".format(self.name + "_out")
+			s_out += "# " + self.out_elab_type + "\n"
 
 			total = 0
 
@@ -307,10 +310,89 @@ class method:
 
 		return (s_in, s_out)
 
+def outputExpander(ba_name, module_name):
+	utils.shellCommand(shlex.split('./tcllibs/genOutputInfo.tcl {0} > type_info.txt'.format(ba_name))).run()
+	
+	f = open("type_info.txt", "r")
+	
+	data = f.readlines()
+	
+	interface_names = []
+	methods_bits = []
+	methods_port_names = []
+	
+	i = 0
+	
+	while True:
+		try:
+			interface_names.append(re.findall(r'Interface (.*?) {', data[i]))
+			methods_bits.append(re.findall(r'method {(.*?) {{\(\* ports', data[i]))
+			methods_port_names.append(re.findall(r'ports = \[(.*?)\]', data[i]))
+			i += 2
+		except IndexError:
+			break
+	
+	types = []
+	names = []
+	
+	for i in range(len(interface_names)):
+		for j in range(len(methods_bits[i])):
+			method_info = methods_bits[i][j].split()
+			ports_info = methods_port_names[i][j].split(',')
+	
+			for p in range(len(ports_info)):
+				if ports_info[p] == '':
+					del ports_info[p]
+	
+			end_bits = len(method_info) - 1
+			end_names = len(ports_info) - 1
+	
+			index_cleanup = end_names
+			if index_cleanup < 0: index_cleanup = 0
+			
+			method_name_type = ' '.join(methods_bits[i][j].split()[:(end_bits - index_cleanup)])
+			outType = ''.join(method_name_type.split()[:-1])
+			methodName = method_name_type.split()[-1]
+	
+			while outType[0] == '{': outType = outType[1:]
+	
+			while outType[-1] == '}': outType = outType[:-1]
+	
+			print(outType)
+	
+			if outType.split('#')[0] == 'ActionValue':
+				outType = '#'.join(outType.split('#')[1:])[1:-1]
+	
+			print(outType)
+	
+			types.append(outType)
+			names.append(methodName)
+	
+	typelist = ' '.join(types)
+	
+	f = open("typelist.txt", "w")
+	
+	f.write(typelist)
+	
+	f.close()
+	
+	utils.shellCommand('./tcllibs/genTypeInfo.tcl {0} > type_info.txt'.format(module_name)).run()
+	
+	f = open("./type_info.txt", "r")
+	
+	expanded = f.readlines()
+	
+	expanded = [i[:-1] for i in expanded]
+	
+	expansionMap = dict(zip(names, expanded))
+	
+	print(expansionMap)
 
-def get_module_primitive(verilog_dir, build_dir, module_name):
+	return expansionMap
+
+def get_module_primitive(verilog_dir, build_dir, module_name, expansionMap):
 	utils.log.info('Running bluetcl to capture methods used in the design')
-	utils.shellCommand(shlex.split('./tcllibs_vlogfy/genStructInfo.tcl {0} {1} > {2}'.format(build_dir, module_name,'module_info.txt'))).run()
+	utils.shellCommand(shlex.split('./tcllibs/genMethodInfo.tcl {0} {1} > {2}'.format(build_dir, module_name,'module_info.txt'))).run()
 
 	f = open('module_info.txt', 'r')
 	bluetcl_out = f.readlines()[0]
@@ -338,7 +420,10 @@ def get_module_primitive(verilog_dir, build_dir, module_name):
 	methods = []
 
 	for m in method_names:
-		methods.append(method(_name=m))
+		try:
+			methods.append(method(_name=m, _out_elab_type=expansionMap[m]))
+		except:
+			methods.append(method(_name=m, _out_elab_type=""))
 	
 	mod = module(_name=module_name, _methods=methods, _vdir=verilog_dir)
 
@@ -352,15 +437,21 @@ if __name__=="__main__":
 		verilog_dir = args[1]
 		build_dir = args[2]
 		module_name = args[3]
-		dcls_dir = args[4]
-		#src_dir = args[3]
-		#src_name = args[4]
+		ba_name = args[4]
+		dcls_dir = args[5]
 		print(verilog_dir, module_name)
 	except:
 		print("[ERROR] Please provide command line arguments for vdir and module_name!")
 		exit
 
-	mod = get_module_primitive(verilog_dir, build_dir, module_name)
+	utils.log.info('Running bluetcl to capture structs used in the design')
+	utils.shellCommand(shlex.split('./tcllibs/genStructInfo.tcl {0} > {1}'.format(ba_name, 'struct_info.txt'))).run()
+
+	utils.create_dataclass_frm_bsv('./struct_info.txt')
+
+	expansionMap = outputExpander(ba_name, module_name)
+
+	mod = get_module_primitive(verilog_dir, build_dir, module_name, expansionMap)
 
 	mod.populate_method_vports()
 

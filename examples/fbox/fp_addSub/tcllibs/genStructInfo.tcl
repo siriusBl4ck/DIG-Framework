@@ -8,16 +8,9 @@ namespace import ::Bluetcl::*
 namespace import ::utils::*
 namespace import types::*
 
-if { [info exists env(BSC_BUILDDIR)] } {
-  set builddir $env(BSC_BUILDDIR)
-} else {
-  set builddir "build/hw/intermediate"
-}
-
-flags set -bdir $builddir
 flags set -verilog
 
-set packlist {fpu_common}
+set packlist [lrange $argv 0 end]
 
 foreach packName $packlist {
   bpackage load $packName
@@ -28,7 +21,7 @@ foreach packName $packlist {
       set key [lindex $ft 0]
       #if { $key == "Struct" || $key == "Alias" || $key == "" } {
       puts "--$t"
-      showTypeSize $t
+      #showTypeSize $t
       puts "$$$$"
 	  #}
       #if { $key == "Enum"} {

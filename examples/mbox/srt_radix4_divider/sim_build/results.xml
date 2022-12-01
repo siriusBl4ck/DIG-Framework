@@ -1,6 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1669887344" />
-    <testcase classname="srt_radix4_bsc_tb" file="/mnt/5a853c24-31e3-4d80-9826-512f6bd995e7/saurav/siriusBl4ck/EE_Core/MiniProject_2/DIG-Framework/examples/mbox/srt_radix4_divider/srt_radix4_bsc_tb.py" lineno="19" name="test" ratio_time="6134429292369.445" sim_time_ns="4011000000000" time="0.6538505554199219" />
+    <property name="random_seed" value="1669924992" />
+    <testcase classname="srt_radix4_bsc_tb" file="/mnt/5a853c24-31e3-4d80-9826-512f6bd995e7/saurav/siriusBl4ck/EE_Core/MiniProject_2/DIG-Framework/examples/mbox/srt_radix4_divider/srt_radix4_bsc_tb.py" lineno="19" name="test" ratio_time="12367484662450.406" sim_time_ns="4011000000000" time="0.32431817054748535" />
   </testsuite>
 </testsuites>

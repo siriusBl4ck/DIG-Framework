@@ -1,0 +1,4 @@
+--Ifc_vectest
+$$$$
+--MyType
+$$$$
