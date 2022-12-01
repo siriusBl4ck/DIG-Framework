@@ -1,3 +1,6 @@
+from cocotb.triggers import FallingEdge
+from cocotb.triggers import RisingEdge
+
 class ma_start_in:
 	def __init__(self):
 		self.active = False
@@ -5,6 +8,8 @@ class ma_start_in:
 		self.data_ports = { "ma_start_dividend" : int(0), "ma_start_divisor" : int(0), "ma_start_opcode" : int(0), "ma_start_funct3" : int(0)}
 
 	def set(self, portname, val): self.data_ports[portname] = val
+
+	def get(self, portname): return self.data_ports[portname]
 
 	def wake(self): self.active = True
 
@@ -22,20 +27,25 @@ class ma_start_in:
 
 class ma_start_out:
 	def __init__(self):
+		self.active = False
 		self.rdy_ports = ["RDY_ma_start"]
 		self.data_ports = {}
 
 	def set(self, portname, val): self.data_ports[portname] = val
+
+	def get(self, portname): return self.data_ports[portname]
 
 	def get_ports_raw(self): return [self.rdy_ports, self.data_ports]
 
 	def catch(self, dut):
 		for rdy in self.rdy_ports:
 			if dut._id(rdy, extended=False) == 1:
+				self.active = True
 				for k in self.data_ports.keys():
 					if rdy[4:] in k:
 						self.data_ports[k] = dut._id(k, extended=False).value
 						dut._log.info("CATCH " + k + " " + hex(self.data_ports[k]))
+			else: self.active = False
 
 	def cmp(self, expected):
 		for k in self.data_ports.keys():
@@ -49,6 +59,8 @@ class mav_result_in:
 		self.data_ports = {}
 
 	def set(self, portname, val): self.data_ports[portname] = val
+
+	def get(self, portname): return self.data_ports[portname]
 
 	def wake(self): self.active = True
 
@@ -66,20 +78,25 @@ class mav_result_in:
 
 class mav_result_out:
 	def __init__(self):
+		self.active = False
 		self.rdy_ports = ["RDY_mav_result"]
 		self.data_ports = { "mav_result" : int(0)}
 
 	def set(self, portname, val): self.data_ports[portname] = val
+
+	def get(self, portname): return self.data_ports[portname]
 
 	def get_ports_raw(self): return [self.rdy_ports, self.data_ports]
 
 	def catch(self, dut):
 		for rdy in self.rdy_ports:
 			if dut._id(rdy, extended=False) == 1:
+				self.active = True
 				for k in self.data_ports.keys():
 					if rdy[4:] in k:
 						self.data_ports[k] = dut._id(k, extended=False).value
 						dut._log.info("CATCH " + k + " " + hex(self.data_ports[k]))
+			else: self.active = False
 
 	def cmp(self, expected):
 		for k in self.data_ports.keys():
@@ -93,6 +110,8 @@ class ma_set_flush_in:
 		self.data_ports = { "ma_set_flush_c" : int(0)}
 
 	def set(self, portname, val): self.data_ports[portname] = val
+
+	def get(self, portname): return self.data_ports[portname]
 
 	def wake(self): self.active = True
 
@@ -110,20 +129,25 @@ class ma_set_flush_in:
 
 class ma_set_flush_out:
 	def __init__(self):
+		self.active = False
 		self.rdy_ports = ["RDY_ma_set_flush"]
 		self.data_ports = {}
 
 	def set(self, portname, val): self.data_ports[portname] = val
+
+	def get(self, portname): return self.data_ports[portname]
 
 	def get_ports_raw(self): return [self.rdy_ports, self.data_ports]
 
 	def catch(self, dut):
 		for rdy in self.rdy_ports:
 			if dut._id(rdy, extended=False) == 1:
+				self.active = True
 				for k in self.data_ports.keys():
 					if rdy[4:] in k:
 						self.data_ports[k] = dut._id(k, extended=False).value
 						dut._log.info("CATCH " + k + " " + hex(self.data_ports[k]))
+			else: self.active = False
 
 	def cmp(self, expected):
 		for k in self.data_ports.keys():
@@ -138,6 +162,12 @@ class mk_srt_radix4_divider:
 		self._mav_result_out = mav_result_out()
 		self._ma_set_flush_in = ma_set_flush_in()
 		self._ma_set_flush_out = ma_set_flush_out()
+
+	async def init_dut(self, dut):
+		await FallingEdge(dut.CLK)
+		dut.RST_N.value = 0
+		await RisingEdge(dut.CLK)
+		dut.RST_N.value = 1
 
 	def sleepall(self):
 		self._ma_start_in.sleep()

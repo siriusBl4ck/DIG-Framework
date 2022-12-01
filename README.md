@@ -2,6 +2,19 @@
 
 ![alt text](https://github.com/siriusBl4ck/DIG-Framework/blob/main/DIG_diag.png)
 
+## How to run
+```
+python3 verilogify.py <verilog_dir> <build_dir> <module_name> <dataclass_dir>
+```
+Above command takes the verilog file located in verilog\_dir, .ba/.bo files in buil\_dir corresponding to module\_name and creates a file called module\_name\_dataclasses.py with the generated dataclasses.
+
+Now, we can create a testbench for the design to be tested, say mk\_tb.py
+
+```
+python3 mk_tb.py
+```
+runs the cocotb simulation
+
 ## Objective
 
 One of the major advantages of using Bluespec SystemVerilog for digital design is its rigorous type driven approach. This eliminates the need for handling every signal at the bit level, unlike verilog. It also eliminates the need to worry about handshaking signals. These are derived when the bluespec is compiled into verilog.

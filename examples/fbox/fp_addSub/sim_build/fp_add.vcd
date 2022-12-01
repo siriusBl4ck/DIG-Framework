@@ -1,0 +1,436 @@
+$date
+	Thu Dec  1 17:03:15 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module mk_fpu_add_sub_sp_instance $end
+$var wire 1 ! CLK $end
+$var wire 1 " EN_send $end
+$var wire 1 # IF_send_operands_BITS_65_TO_58_3_EQ_255_4_AND__ETC___d370 $end
+$var wire 1 $ IF_send_operands_BITS_65_TO_58_3_EQ_255_4_AND__ETC___d410 $end
+$var wire 1 % NOT_IF_send_operands_BITS_33_TO_26_2_EQ_0_2_TH_ETC___d92 $end
+$var wire 1 & NOT_IF_send_operands_BITS_65_TO_58_3_EQ_255_4__ETC___d368 $end
+$var wire 1 ' NOT_send_operands_BITS_65_TO_58_3_EQ_255_4_7_O_ETC___d383 $end
+$var wire 1 ( NOT_send_operands_BITS_65_TO_58_3_EQ_255_4_7_O_ETC___d457 $end
+$var wire 1 ) NOT_send_operands_BITS_65_TO_58_3_EQ_255_4_7_O_ETC___d71 $end
+$var wire 1 * RDY_receive $end
+$var wire 1 + RDY_send $end
+$var wire 1 , RST_N $end
+$var wire 1 - \rg_stage_out_0$EN $end
+$var wire 37 . \rg_stage_out_1$D_IN [36:0] $end
+$var wire 1 / \rg_stage_out_1$EN $end
+$var wire 37 0 \rg_stage_out_2$D_IN [36:0] $end
+$var wire 1 1 \rg_stage_out_2$EN $end
+$var wire 37 2 \rg_stage_out_3$D_IN [36:0] $end
+$var wire 1 3 \rg_stage_out_3$EN $end
+$var wire 1 4 \rg_stage_valid_0$D_IN $end
+$var wire 1 5 \rg_stage_valid_0$EN $end
+$var wire 1 6 \rg_stage_valid_1$D_IN $end
+$var wire 1 7 \rg_stage_valid_1$EN $end
+$var wire 1 8 \rg_stage_valid_2$D_IN $end
+$var wire 1 9 \rg_stage_valid_2$EN $end
+$var wire 1 : \rg_stage_valid_3$D_IN $end
+$var wire 1 ; \rg_stage_valid_3$EN $end
+$var wire 67 < send_operands [66:0] $end
+$var wire 1 = send_operands_BITS_65_TO_58_3_EQ_255_4_AND_NOT_ETC___d49 $end
+$var wire 1 > send_operands_BIT_66_4_EQ_send_operands_BIT_34_3___d97 $end
+$var wire 8 ? y__h3723 [7:0] $end
+$var wire 1 @ y__h3696 $end
+$var wire 10 A x__h3628 [9:0] $end
+$var wire 10 B x__h3621 [9:0] $end
+$var wire 28 C sfdin__h8058 [27:0] $end
+$var wire 28 D sfdin__h3123 [27:0] $end
+$var wire 25 E sfd__h8167 [24:0] $end
+$var wire 23 F sfd__h3095 [22:0] $end
+$var wire 23 G sfd__h3092 [22:0] $end
+$var wire 28 H sfdB__h2034 [27:0] $end
+$var wire 28 I sfdA__h2033 [27:0] $end
+$var wire 37 J \rg_stage_out_0$D_IN [36:0] $end
+$var wire 28 K result__h3797 [27:0] $end
+$var wire 28 L result__h3664 [27:0] $end
+$var wire 28 M result__h3611 [27:0] $end
+$var wire 38 N receive [37:0] $end
+$var wire 23 O out_sfd__h8594 [22:0] $end
+$var wire 8 P out_exp__h8593 [7:0] $end
+$var wire 28 Q opB__h2016 [27:0] $end
+$var wire 28 R guard__h3657 [27:0] $end
+$var wire 2 S guard__h3109 [1:0] $end
+$var wire 2 T guard__h3074 [1:0] $end
+$var wire 8 U din_inc___2_exp__h8679 [7:0] $end
+$var wire 8 V din_exp__h8021 [7:0] $end
+$var wire 8 W din_exp021_MINUS_127__q1 [7:0] $end
+$var wire 8 X diff__h2020 [7:0] $end
+$var wire 8 Y b__h3517 [7:0] $end
+$var wire 8 Z b__h3503 [7:0] $end
+$var wire 28 [ b__h2002 [27:0] $end
+$var wire 28 \ a__h2000 [27:0] $end
+$var wire 23 ] _theResult___snd_snd_sfd__h8075 [22:0] $end
+$var wire 8 ^ _theResult___snd_snd_exp__h8074 [7:0] $end
+$var wire 23 _ _theResult___snd_sfd__h8668 [22:0] $end
+$var wire 23 ` _theResult___snd_fst_sfd__h8068 [22:0] $end
+$var wire 8 a _theResult___snd_fst_exp__h8067 [7:0] $end
+$var wire 2 b _theResult___snd_fst__h8196 [1:0] $end
+$var wire 8 c _theResult___snd_exp__h8667 [7:0] $end
+$var wire 28 d _theResult___snd__h8138 [27:0] $end
+$var wire 28 e _theResult___snd__h8122 [27:0] $end
+$var wire 28 f _theResult___snd__h8116 [27:0] $end
+$var wire 28 g _theResult___snd__h8104 [27:0] $end
+$var wire 28 h _theResult___snd__h8102 [27:0] $end
+$var wire 28 i _theResult___snd__h8088 [27:0] $end
+$var wire 23 j _theResult___sfd__h8591 [22:0] $end
+$var wire 8 k _theResult___fst_exp__h8149 [7:0] $end
+$var wire 8 l _theResult___fst_exp__h8146 [7:0] $end
+$var wire 8 m _theResult___fst_exp__h8143 [7:0] $end
+$var wire 8 n _theResult___fst_exp__h8140 [7:0] $end
+$var wire 8 o _theResult___fst_exp__h8108 [7:0] $end
+$var wire 8 p _theResult___fst_exp__h8093 [7:0] $end
+$var wire 8 q _theResult___fst_exp__h8064 [7:0] $end
+$var wire 8 r _theResult___exp__h8590 [7:0] $end
+$var wire 28 s _0b0_CONCAT_IF_NOT_IF_send_operands_BITS_33_TO__ETC___d114 [27:0] $end
+$var wire 1 t _0_CONCAT_IF_IF_IF_NOT_IF_send_operands_BITS_33_ETC___d255 $end
+$var wire 2 u IF_sfdin058_BIT_4_THEN_2_ELSE_0__q3 [1:0] $end
+$var wire 23 v IF_send_operands_BIT_66_4_EQ_send_operands_BIT_ETC___d340 [22:0] $end
+$var wire 1 w IF_send_operands_BITS_65_TO_58_3_EQ_255_4_AND__ETC___d464 $end
+$var wire 1 x IF_send_operands_BITS_65_TO_58_3_EQ_255_4_AND__ETC___d458 $end
+$var wire 31 y IF_send_operands_BITS_65_TO_58_3_EQ_255_4_AND__ETC___d444 [30:0] $end
+$var wire 1 z IF_send_operands_BITS_65_TO_58_3_EQ_255_4_AND__ETC___d406 $end
+$var wire 1 { IF_send_operands_BITS_65_TO_58_3_EQ_255_4_AND__ETC___d385 $end
+$var wire 23 | IF_send_operands_BITS_65_TO_58_3_EQ_255_4_AND__ETC___d346 [22:0] $end
+$var wire 8 } IF_send_operands_BITS_65_TO_58_3_EQ_255_4_AND__ETC___d333 [7:0] $end
+$var wire 10 ~ IF_send_operands_BITS_65_TO_58_3_EQ_0_6_THEN_8_ETC___d79 [9:0] $end
+$var wire 31 !" IF_send_operands_BITS_33_TO_26_2_EQ_255_3_AND__ETC___d420 [30:0] $end
+$var wire 23 "" IF_send_operands_BITS_33_TO_26_2_EQ_255_3_AND__ETC___d345 [22:0] $end
+$var wire 10 #" IF_send_operands_BITS_33_TO_26_2_EQ_0_2_THEN_8_ETC___d75 [9:0] $end
+$var wire 23 $" IF_NOT_send_operands_BITS_65_TO_58_3_EQ_255_4__ETC___d358 [22:0] $end
+$var wire 8 %" IF_NOT_send_operands_BITS_65_TO_58_3_EQ_255_4__ETC___d324 [7:0] $end
+$var wire 1 &" IF_NOT_IF_send_operands_BITS_33_TO_26_2_EQ_0_2_ETC___d99 $end
+$var wire 1 '" IF_NOT_IF_send_operands_BITS_33_TO_26_2_EQ_0_2_ETC___d319 $end
+$var wire 27 (" IF_NOT_IF_send_operands_BITS_33_TO_26_2_EQ_0_2_ETC___d112 [26:0] $end
+$var wire 1 )" IF_IF_send_operands_BITS_65_TO_58_3_EQ_255_4_A_ETC___d407 $end
+$var wire 31 *" IF_IF_NOT_send_operands_BITS_65_TO_58_3_EQ_255_ETC___d437 [30:0] $end
+$var wire 31 +" IF_IF_NOT_send_operands_BITS_65_TO_58_3_EQ_255_ETC___d435 [30:0] $end
+$var wire 23 ," IF_IF_NOT_send_operands_BITS_65_TO_58_3_EQ_255_ETC___d357 [22:0] $end
+$var wire 8 -" IF_IF_NOT_send_operands_BITS_65_TO_58_3_EQ_255_ETC___d322 [7:0] $end
+$var wire 8 ." IF_IF_NOT_send_operands_BITS_65_TO_58_3_EQ_255_ETC___d307 [7:0] $end
+$var wire 9 /" IF_IF_NOT_IF_send_operands_BITS_33_TO_26_2_EQ__ETC___d135 [8:0] $end
+$var wire 28 0" IF_IF_NOT_IF_send_operands_BITS_33_TO_26_2_EQ__ETC___d125 [27:0] $end
+$var wire 31 1" IF_IF_IF_NOT_IF_send_operands_BITS_33_TO_26_2__ETC___d423 [30:0] $end
+$var wire 5 2" IF_IF_IF_NOT_IF_send_operands_BITS_33_TO_26_2__ETC___d252 [4:0] $end
+$var wire 31 3" IF_0b0_CONCAT_NOT_IF_NOT_send_operands_BITS_65_ETC___d427 [30:0] $end
+$var wire 28 4" IF_0_CONCAT_IF_IF_IF_NOT_IF_send_operands_BITS_ETC__q2 [27:0] $end
+$var reg 31 5" CASE_guard109_0b0_IF_IF_IF_NOT_IF_send_operand_ETC__q10 [30:0] $end
+$var reg 31 6" CASE_guard109_0b0_IF_IF_IF_NOT_IF_send_operand_ETC__q11 [30:0] $end
+$var reg 1 7" CASE_guard109_0b0_IF_NOT_IF_send_operands_BITS_ETC__q8 $end
+$var reg 1 8" CASE_guard109_0b0_IF_NOT_IF_send_operands_BITS_ETC__q9 $end
+$var reg 8 9" CASE_guard109_0b0_theResult___snd_snd_exp074_0_ETC__q4 [7:0] $end
+$var reg 8 :" CASE_guard109_0b0_theResult___snd_snd_exp074_0_ETC__q5 [7:0] $end
+$var reg 23 ;" CASE_guard109_0b0_theResult___snd_snd_sfd075_0_ETC__q6 [22:0] $end
+$var reg 23 <" CASE_guard109_0b0_theResult___snd_snd_sfd075_0_ETC__q7 [22:0] $end
+$var reg 1 =" IF_send_operands_BITS_2_TO_0_65_EQ_0_66_THEN_I_ETC___d404 $end
+$var reg 31 >" IF_send_operands_BITS_2_TO_0_65_EQ_0_66_THEN_I_ETC___d442 [30:0] $end
+$var reg 8 ?" _theResult___snd_exp__h8664 [7:0] $end
+$var reg 23 @" _theResult___snd_sfd__h8665 [22:0] $end
+$var reg 37 A" rg_stage_out_0 [36:0] $end
+$var reg 37 B" rg_stage_out_1 [36:0] $end
+$var reg 37 C" rg_stage_out_2 [36:0] $end
+$var reg 37 D" rg_stage_out_3 [36:0] $end
+$var reg 1 E" rg_stage_valid_0 $end
+$var reg 1 F" rg_stage_valid_1 $end
+$var reg 1 G" rg_stage_valid_2 $end
+$var reg 1 H" rg_stage_valid_3 $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0H"
+0G"
+0F"
+0E"
+b101010101010101010101010101010101010 D"
+b101010101010101010101010101010101010 C"
+b101010101010101010101010101010101010 B"
+b101010101010101010101010101010101010 A"
+b0 @"
+b0 ?"
+b0 >"
+x="
+bx <"
+bx ;"
+bx :"
+bx 9"
+x8"
+x7"
+bx 6"
+bx 5"
+bx 4"
+bx 3"
+bx 2"
+bx 1"
+bx 0"
+bx /"
+bx ."
+bx -"
+bx ,"
+bx +"
+bx *"
+x)"
+bxzzzzzzzzzzzzzzzzzzzzzzz000 ("
+z'"
+x&"
+bx %"
+bx $"
+bx #"
+bx ""
+bx !"
+bx ~
+bx }
+bx |
+x{
+xz
+bx y
+xx
+xw
+bx0000000000000000000000 v
+bx0 u
+xt
+bx s
+bx r
+bx q
+bx p
+bx o
+bx n
+bx m
+bx l
+bx k
+bx j
+bx0 i
+bx h
+bx00 g
+bx f
+bx00 e
+bx d
+bx c
+bx b
+bx a
+bx `
+bx _
+bx ^
+bx ]
+b0xzzzzzzzzzzzzzzzzzzzzzzz000 \
+bx [
+bx Z
+bx Y
+bx X
+bx W
+bz V
+bx U
+bx T
+bx S
+bx R
+b0xzzzzzzzzzzzzzzzzzzzzzzz000 Q
+bx P
+bx O
+b101010101010101010101010101010101010 N
+bx M
+bx L
+bx K
+bx0xxx J
+b0xzzzzzzzzzzzzzzzzzzzzzzz000 I
+b0xzzzzzzzzzzzzzzzzzzzzzzz000 H
+b1zzzzzzzzzzzzzzzzzzzzzz G
+b1zzzzzzzzzzzzzzzzzzzzzz F
+bx E
+bx D
+bx C
+bx B
+bx A
+x@
+bx ?
+x>
+x=
+bz <
+1;
+0:
+19
+08
+17
+06
+15
+z4
+13
+b101010101010101010101010101010101010 2
+11
+b101010101010101010101010101010101010 0
+1/
+b101010101010101010101010101010101010 .
+z-
+0,
+1+
+1*
+x)
+x(
+x'
+x&
+x%
+x$
+x#
+z"
+0!
+$end
+#5
+1)"
+0x
+0(
+0#
+0$
+1&
+b11100111 }
+b1110011100001110011101111101000 *"
+b1110011101111101000 $"
+b1110011101111100111 _
+18"
+17"
+b1110011101111101000 <"
+b1110011101111101000 ;"
+0{
+1w
+b11100111 c
+b11100111 %"
+b11100111 :"
+b11100111 9"
+b1110011100001110011101111101000 6"
+b1110011100001110011101111101000 5"
+b11100111 P
+b1110011101111101000 O
+b1110011101111101000 j
+1'
+b1110011100001110011101111100111 y
+b11100111 r
+b1110011100001110011101111101000 3"
+b1110011101111100111 ,"
+b11100111 -"
+b11100111 ."
+b100001110011101111101000 E
+b1110011101111100111 ]
+b11 S
+b11101000 U
+b11100111 ^
+b1110011100001110011101111100111 +"
+b1110011101111100111 `
+b11 T
+b10 u
+b11100111 a
+b1110011100001110011101111100111 1"
+b11100111 l
+b111001110111110011111100 e
+b11 b
+b11100111 q
+1t
+b11100111 m
+b100001110011101111100111111 4"
+b111001110111110011111100 f
+b111001110111110011111100 C
+b11100111 k
+b11100111 n
+b100001110011101111100111111 d
+b0 2"
+b111001110111110011111100 h
+b111001110111110011111100 g
+b1000011100111011111001111110 i
+b100001110011101111100111111 D
+b100001110011101111100111111 M
+b100001110011101111101000001 K
+1z
+1)
+0=
+b1111001110000111001110111110011100001 J
+b1101000 /"
+b11101000 p
+b1 [
+b1110011101111101000 |
+b0 L
+b1101000 W
+b1 0"
+b1110011101111101000 ""
+b1110011100001110011101111101000 !"
+0@
+b0 R
+b1100000 ?
+b0 s
+b10111100 X
+1%
+b11100111 o
+1&"
+b10000000000000000000000 v
+b100010100000110001001011000 Q
+b100010100000110001001011000 ("
+1'"
+b100001110011101111101000000 \
+b10111100 B
+b1101000100 A
+b1101000 #"
+b1110101100 ~
+b11100111 V
+0>
+b1110011100001110011101111100111 >"
+1="
+b1110011101111100111 @"
+b11100111 ?"
+b1101000 Z
+b10101100 Y
+b100010100000110001001011000 I
+b100001110011101111101000000 H
+b10010100000110001001011 G
+b10001110011101111101000 F
+b1010110001010000011000100101111110011100001110011101111101000011 <
+1-
+14
+1"
+1,
+b0 N
+b0 D"
+b0 2
+b0 C"
+b0 0
+b0 B"
+b0 .
+b0 A"
+1!
+#10
+0!
+#15
+16
+1E"
+b1111001110000111001110111110011100001 .
+b1111001110000111001110111110011100001 A"
+1!
+#20
+0!
+#25
+18
+1F"
+b1111001110000111001110111110011100001 0
+b1111001110000111001110111110011100001 B"
+1!
+#30
+0!
+#35
+1:
+1G"
+b1111001110000111001110111110011100001 2
+b1111001110000111001110111110011100001 C"
+1!
+#40
+0!
+#45
+1H"
+b11111001110000111001110111110011100001 N
+b1111001110000111001110111110011100001 D"
+1!
+#50
+0!
+#51

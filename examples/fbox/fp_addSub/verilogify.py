@@ -310,7 +310,7 @@ class method:
 
 def get_module_primitive(verilog_dir, build_dir, module_name):
 	utils.log.info('Running bluetcl to capture methods used in the design')
-	utils.shellCommand(shlex.split('./tcllibs/genStructInfo.tcl {0} {1} > {2}'.format(build_dir, module_name,'module_info.txt'))).run()
+	utils.shellCommand(shlex.split('./tcllibs_vlogfy/genStructInfo.tcl {0} {1} > {2}'.format(build_dir, module_name,'module_info.txt'))).run()
 
 	f = open('module_info.txt', 'r')
 	bluetcl_out = f.readlines()[0]
