@@ -1,6 +1,8 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1669924880" />
-    <testcase classname="fpu_add_sub_sp_tb" file="/mnt/5a853c24-31e3-4d80-9826-512f6bd995e7/saurav/siriusBl4ck/EE_Core/MiniProject_2/DIG-Framework/examples/fbox/fp_addSub/fpu_add_sub_sp_tb.py" lineno="90" name="test" ratio_time="15843965484353.057" sim_time_ns="1006000000000" time="0.06349420547485352" />
+    <property name="random_seed" value="1670051415" />
+    <testcase classname="fpu_add_sub_sp_tb" file="/mnt/5a853c24-31e3-4d80-9826-512f6bd995e7/saurav/siriusBl4ck/EE_Core/DIG-Framework/examples/fbox/fp_addSub/fpu_add_sub_sp_tb.py" lineno="90" name="test" ratio_time="1154501513900.358" sim_time_ns="1000000000" time="0.0008661746978759766">
+      <failure />
+    </testcase>
   </testsuite>
 </testsuites>

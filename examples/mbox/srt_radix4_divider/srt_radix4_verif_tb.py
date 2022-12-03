@@ -72,7 +72,7 @@ if __name__ == "__main__":
 	runner = get_runner(sim)()
 	runner.build(
 		verilog_sources=[
-			Path("/mnt/5a853c24-31e3-4d80-9826-512f6bd995e7/saurav/siriusBl4ck/EE_Core/MiniProject_2/mbox/test/mk_srt_radix4_divider.v")
+			Path("./mk_srt_radix4_divider.v")
 		],
 		toplevel="mk_srt_radix4_divider"
 	)

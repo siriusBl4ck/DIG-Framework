@@ -57,7 +57,7 @@ if __name__ == "__main__":
 	runner = get_runner(sim)()
 	runner.build(
 		verilog_sources=[
-			Path("/mnt/5a853c24-31e3-4d80-9826-512f6bd995e7/saurav/siriusBl4ck/EE_Core/MiniProject_2/bsv_conversion_tests/mk_test11.v")
+			Path("./mk_test11.v")
 		],
 		toplevel="mk_test11"
 	)

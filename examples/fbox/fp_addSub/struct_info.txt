@@ -1,0 +1,16 @@
+--Disorder
+$$$$
+--Double
+$$$$
+--DoubleExtended
+$$$$
+--Exception
+$$$$
+--Float
+$$$$
+--Half
+$$$$
+--RoundMode
+$$$$
+--SingleExtended
+$$$$
